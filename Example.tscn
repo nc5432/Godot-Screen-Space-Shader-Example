@@ -1,0 +1,106 @@
+[gd_scene load_steps=5 format=3 uid="uid://eq0627c3d1bi"]
+
+[ext_resource type="Material" uid="uid://b3uhl5r8uvo3a" path="res://ImageAdjustmentMat.tres" id="1_eoxl5"]
+[ext_resource type="Script" path="res://Controls.gd" id="2_p71hv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ph82u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_36pwp"]
+albedo_color = Color(1, 0.541241, 0.47676, 1)
+
+[node name="Example" type="Node3D"]
+
+[node name="Kyoobe" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ph82u")
+surface_material_override/0 = SubResource("StandardMaterial3D_36pwp")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.947138, 0.320828, 0, -0.320828, 0.947138, 0, 1.66389, 4.38657)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = ExtResource("1_eoxl5")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+offset_left = 24.0
+offset_top = 20.0
+offset_right = 334.0
+offset_bottom = 139.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
+layout_mode = 2
+script = ExtResource("2_p71hv")
+screenShader = ExtResource("1_eoxl5")
+
+[node name="Brightness" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/Brightness"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -5.0
+max_value = 5.0
+step = 0.1
+value = 1.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/Brightness"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Brightness"
+fit_content = true
+
+[node name="Contrast" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/Contrast"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -5.0
+max_value = 5.0
+step = 0.1
+value = 1.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/Contrast"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Contrast"
+fit_content = true
+
+[node name="Saturation" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/Saturation"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -5.0
+max_value = 5.0
+step = 0.1
+value = 1.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/Saturation"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Saturation"
+fit_content = true
+
+[node name="Reset" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Reset"
+
+[connection signal="value_changed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/Brightness/HSlider" to="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer" method="_on_brightness_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/Contrast/HSlider" to="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer" method="_on_contrast_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/Saturation/HSlider" to="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer" method="_on_saturation_value_changed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/Reset" to="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer" method="_on_reset_pressed"]

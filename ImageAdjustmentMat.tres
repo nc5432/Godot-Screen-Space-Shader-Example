@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b3uhl5r8uvo3a"]
+
+[ext_resource type="Shader" path="res://ImageAdjustment.gdshader" id="1_aqqup"]
+
+[resource]
+shader = ExtResource("1_aqqup")
+shader_parameter/brightness = 1.0
+shader_parameter/contrast = 1.0
+shader_parameter/saturation = 1.0

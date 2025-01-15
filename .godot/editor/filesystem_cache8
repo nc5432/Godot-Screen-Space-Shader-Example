@@ -1,0 +1,6 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1736965996
+Example.tscn::PackedScene::315360170739930794::1736966096::0::1::::<><>::res://TestScreenSpace.gdshader<>res://Controls.gd
+icon.svg::CompressedTexture2D::382072999391641035::1736964726::1736964739::1::::<><>::
+Controls.gd::GDScript::-1::1736966061::0::1::::<>VBoxContainer<>::
+TestScreenSpace.gdshader::Shader::-1::1736966096::0::1::::<><>::
